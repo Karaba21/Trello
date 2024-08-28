@@ -1,0 +1,18 @@
+/* 
+body{
+    background-color: white;
+}
+ */
+ 
+.colorizedNav {
+    background-color: rgb(30, 134, 231);
+}
+
+.leftNavBarItems{
+    font-weight: bold;
+    color: rgb(118, 20, 125);
+}
+
+.styled-boxes a{
+    color:rgb(149, 235, 205);
+}
