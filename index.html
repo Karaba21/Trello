@@ -15,17 +15,9 @@
 <body>
     <nav class="navbar colorizedNav" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
-          <a class="navbar-item" href="#">
             <h1 class="title has-text-white">Mi Trello</h1>
-          </a>
-          
-          <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasic">
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-          </a>
         </div>
-         
+        
     
         <div id="navbarBasic" class="navbar-menu">
           <div class="navbar-start leftNavBarItems">
@@ -37,58 +29,52 @@
           <div class="navbar-end">
             <div class="navbar-item">
               <div class="buttons">
-                <!-- 
                 <a class="button is-light">
                   Iniciar sesión
                 </a>
                 <a class="button is-info">
                   Registrarse
                 </a>
-                 -->
-                <a class="button is-danger">
-                    Agregar tarea
-                  </a>
               </div>
             </div>
           </div>
         </div>
-      </nav>
-
-      <div class="columns is-mobile column-wrapper">
-        <div class="column is-one-fourth">
-            <div class="box is-justify-content-space-between is-flex styled-boxes">
-                <a class="title is-5">To do</a>
-                <!-- 
-                <div class="buttons">
-                    <a class="button is-light">
-                      <p>Add task</p>
-                    </a>
+    </nav>
+    <div class="column-wrapper">
+        <div class="columns is-mobile">
+            <div class="column is-one-fourth">
+                <div class="box styled-boxes">
+                    <a class="title is-5 to-do">To do</a> 
+                    <div class="buttons">
+                        <a class="button is-light">
+                        <p>Add task</p>
+                        </a>
+                    </div>
                 </div>
-                 -->
+                
             </div>
-            
-        </div>
-        <div class="column is-one-fifth mg-large">
-            <div class="box is-justify-content-space-between styled-boxes">
-                <a class="title is-5">In Progress</a>
+            <div class="column is-one-fifth mg-large">
+                <div class="box is-justify-content-space-between styled-boxes">
+                    <a class="title is-5">In Progress</a>
+                </div>
+            </div>
+            <div class="column is-one-fitfh">
+                <div class="box is-justify-content-space-between styled-boxes">
+                    <a class="title is-5">Review</a>
+                </div>
+            </div>
+            <div class="column is-one-fifth">
+                <div class="box is-justify-content-space-between styled-boxes">
+                    <a class="title is-5">Blocked</a>
+                </div>
+            </div>
+            <div class="column is-one-fifth">
+                <div class="box is-justify-content-space-between styled-boxes">
+                    <a class="title is-5">Done</a>
+                </div>
             </div>
         </div>
-        <div class="column is-one-fitfh">
-            <div class="box is-justify-content-space-between styled-boxes">
-                <a class="title is-5">Review</a>
-            </div>
-        </div>
-        <div class="column is-one-fifth">
-            <div class="box is-justify-content-space-between styled-boxes">
-                <a class="title is-5">Blocked</a>
-            </div>
-        </div>
-        <div class="column is-one-fifth">
-            <div class="box is-justify-content-space-between styled-boxes">
-                <a class="title is-5">Done</a>
-            </div>
-        </div>
-      </div>
+    </div>
 
 </body>
 </html>
