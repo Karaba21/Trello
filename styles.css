@@ -24,7 +24,7 @@
 
 
 .styled-boxes {
-    color: black;
+    color: rgb(164, 44, 44);
     padding: 1rem;
     background-color: white;
     /* border-radius: 6px; */
@@ -51,4 +51,96 @@
     body {
         background-color: white !important; 
     }
+}
+
+
+/* Estilos generales para el modal */
+.modal-card {
+    background-color: #ffffff;  /* Fuerza un fondo blanco para el modal */
+    color: #363636;  /* Color de texto predeterminado (gris oscuro) */
+}
+
+.modal-card-body .input, 
+.modal-card-body .textarea,
+.modal-card-body .select select {
+    background-color: #ffffff;  /* Fondo blanco */
+    color: #363636;  /* Texto oscuro */
+    border-color: #dbdbdb;  /* Borde gris claro */
+}
+
+.modal-card-head {
+    background-color: #ffffff;  /* Fondo blanco para el encabezado del modal */
+    color: #363636;  /* Color de texto */
+    border-bottom: 1px solid #dbdbdb;  /* Bordes para separar secciones */
+}
+
+.modal-card .label {
+    color: black !important;
+}
+.modal-card-title {
+    color: black !important;
+}
+.modal-card-body {
+    background-color: #ffffff;  /* Fondo blanco para el cuerpo del modal */
+    color: #363636;  /* Color de texto */
+}
+
+.modal-card-foot {
+    background-color: #ffffff;  /* Fondo blanco para el pie del modal */
+    color: #363636;  /* Color de texto */
+    border-top: 1px solid #dbdbdb;  /* Bordes para separar secciones */
+}
+
+/* Estilo del botón de cerrar (X) */
+.modal .delete {
+    background-color: #ffffff;
+    border: none;
+    color: #363636;
+}
+
+.modal .delete:hover {
+    background-color: #f5f5f5;
+    color: #363636;
+}
+
+/* Estilo de los botones de acción del modal */
+.modal-card-foot .button {
+    background-color: #ffffff;
+    border-color: #dbdbdb;
+    color: #363636;
+}
+
+.modal-card-foot .button.is-success {
+    background-color: #48c774;  /* Botón de guardar en verde */
+    color: #ffffff;
+}
+
+.modal-card-foot .button.is-success:hover {
+    background-color: #3ec46d;
+}
+
+.modal-card-foot .button.cancelModal {
+    background-color: #e44d4d;
+    color: #363636;
+}
+
+.modal-card-foot .button.cancelModal:hover {
+    background-color: #f5f5f5;
+}
+
+/* Aseguramos que la caja del modal tenga siempre un estilo claro */
+.modal-background {
+    background-color: rgba(10, 10, 10, 0.86); /* Fondo oscuro tras el modal */
+}
+
+.task {
+    background-color: white; /* Fondo blanco */
+    color: black; /* Texto negro */
+    padding: 1rem;
+    margin-bottom: 1rem;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3); /* Sombra ligera */
+}
+
+h3.task  p.task{
+    color: black;
 }

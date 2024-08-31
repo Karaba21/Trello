@@ -40,41 +40,111 @@
           </div>
         </div>
     </nav>
+
     <div class="column-wrapper">
         <div class="columns is-mobile">
-            <div class="column is-one-fourth">
-                <div class="box styled-boxes">
-                    <a class="title is-5 to-do">To do</a> 
+            <div class="column is-one-fourth to-do-column">
+                <div class="box styled-boxes is-flex is-justify-content-space-between is-align-items-center">
+                    <a class="title has-text-black is-5 to-do">To Do</a>
                     <div class="buttons">
-                        <a class="button is-light">
-                        <p>Add task</p>
+                        <a class="button is-light" id="add-task-btn">
+                            <p>Add task</p>
                         </a>
                     </div>
                 </div>
-                
+                <div id="to-do-tasks">
+                    <!-- Las tareas nuevas aparecerán aquí -->
+                </div>
             </div>
             <div class="column is-one-fifth mg-large">
                 <div class="box is-justify-content-space-between styled-boxes">
-                    <a class="title is-5">In Progress</a>
+                    <a class="title has-text-black is-5">In Progress</a>
                 </div>
             </div>
             <div class="column is-one-fitfh">
                 <div class="box is-justify-content-space-between styled-boxes">
-                    <a class="title is-5">Review</a>
+                    <a class="title has-text-black is-5">Review</a>
                 </div>
             </div>
             <div class="column is-one-fifth">
                 <div class="box is-justify-content-space-between styled-boxes">
-                    <a class="title is-5">Blocked</a>
+                    <a class="title has-text-black is-5">Blocked</a>
                 </div>
             </div>
             <div class="column is-one-fifth">
                 <div class="box is-justify-content-space-between styled-boxes">
-                    <a class="title is-5">Done</a>
+                    <a class="title has-text-black is-5">Done</a>
                 </div>
             </div>
         </div>
     </div>
+
+
+
+<!-- Modal -->
+<div id="taskModal" class="modal">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+        <header class="modal-card-head">
+            <p class="modal-card-title">Nueva Tarea</p>
+            <button class="delete" aria-label="close"></button>
+        </header>
+        <section class="modal-card-body">
+            <div class="field">
+                <label class="label">Título</label>
+                <div class="control">
+                    <input class="input" type="text" placeholder="Título de la tarea" id="task-title">
+                </div>
+            </div>
+
+            <div class="field">
+                <label class="label">Descripción</label>
+                <div class="control">
+                    <textarea class="textarea" placeholder="Descripción de la tarea" id="task-description"></textarea>
+                </div>
+            </div>
+
+            <div class="field">
+                <label class="label">Asignado</label>
+                <div class="control">
+                    <div class="select">
+                        <select id="task-assigned">
+                            <option>Juan</option>
+                            <option>María</option>
+                            <option>Pedro</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="field">
+                <label class="label">Prioridad</label>
+                <div class="control">
+                    <div class="select">
+                        <select id="task-priority">
+                            <option>Alta</option>
+                            <option>Media</option>
+                            <option>Baja</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="field">
+                <label class="label">Fecha límite</label>
+                <div class="control">
+                    <input class="input" type="date" id="task-deadline">
+                </div>
+            </div>
+        </section>
+        <footer class="modal-card-foot">
+            <button class="button is-success" id="save-task-btn">Guardar</button>
+            <button class="button cancelModal">Cancelar</button>
+        </footer>
+    </div>
+</div>
+
+
 
 </body>
 </html>
