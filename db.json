@@ -1,0 +1,32 @@
+{
+    "tasks":
+    [
+    {
+        "id": 1,
+        "title": "Tarea 1",
+        "description": "Descripción de la tarea 1",
+        "assigned": "Juan",
+        "priority": "Alta",
+        "dueDate": "2024-09-10",
+        "status": "To Do"
+    },
+    {
+        "id": 2,
+        "title": "Tarea 2",
+        "description": "Descripción de la tarea 2",
+        "assigned": "María",
+        "priority": "Media",
+        "dueDate": "2024-09-12",
+        "status": "In Progress"
+    },
+    {
+        "id": 3,
+        "title": "Tarea 3",
+        "description": "Descripción de la tarea 3",
+        "assigned": "Pedro",
+        "priority": "Baja",
+        "dueDate": "2024-09-15",
+        "status": "Done"
+    }
+]
+}
