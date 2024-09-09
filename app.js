@@ -5,21 +5,21 @@ document.addEventListener('DOMContentLoaded', function () {
     const closeModalButtons = document.querySelectorAll('.delete, .cancelModal');
     let draggedTask = null;
 
-    // Mostrar el modal cuando se hace clic en "Add Task"
+    // Muestra el modal cuando se hace clic en "Add Task"
     addTaskBtn.addEventListener('click', function () {
         modal.classList.add('is-active');
     });
 
-    let tasksArray = [];
+    const tasksArray = [];
 
-    // Cerrar el modal
+    // Cerra el modal
     closeModalButtons.forEach(button => {
         button.addEventListener('click', function () {
             modal.classList.remove('is-active');
         });
     });
 
-    // Guardar la tarea y agregarla al box de "To Do"
+    // Guarda la tarea y agregarla al box de "To Do"
     saveTaskBtn.addEventListener('click', function () {
         const title = document.getElementById('task-title').value.trim();
         const description = document.getElementById('task-description').value.trim();
@@ -27,13 +27,13 @@ document.addEventListener('DOMContentLoaded', function () {
         const priority = document.getElementById('task-priority').value;
         const dueDate = document.getElementById('task-deadline').value;
 
-        // Verificar que los campos no estén vacíos
+        // Verifica que los campos no estén vacíos
         if (!title || !description || !assigned || !priority || !dueDate) {
             alert("Por favor, complete todos los campos.");
             return;
         }
 
-        // Crear un objeto de tarea
+        // Crea un objeto de tarea
         const task = {
             title: title,
             description: description,
@@ -43,11 +43,13 @@ document.addEventListener('DOMContentLoaded', function () {
             status: 'To Do'
         };
 
-        // Agregar la tarea al array de tareas
+        // Agrega la tarea al array de tareas
         tasksArray.push(task);
         console.log("Tareas guardadas:", tasksArray);
 
-        // Crear la nueva tarea como un elemento HTML
+        const taskHTML = createTaskHTML(task);
+
+        // Crea la nueva tarea como un elemento HTML
         function createTaskHTML(task) {
             return `
                 <div class="box task" draggable="true">
@@ -72,21 +74,33 @@ document.addEventListener('DOMContentLoaded', function () {
             `;
         }
 
-        // Agregar la nueva tarea en la columna "To Do"
+
+        //
+
+       
+        
+        //para cada tarea de la lista despues del post recorrer el array y traerlo con la task nueva 
+
+        // Agrega la nueva tarea en la columna "To Do"
         const toDoTasksContainer = document.getElementById('to-do-tasks');
         toDoTasksContainer.insertAdjacentHTML('beforeend', taskHTML);
 
-        // Habilitar drag y drop en la nueva tarea
+        // Habilita drag y drop en la nueva tarea
         const newTask = toDoTasksContainer.lastElementChild;
         addDragAndDropEvents(newTask);
 
-        // Cerrar el modal y limpiar los campos
+        // Cierra el modal y limpia los campos
         modal.classList.remove('is-active');
         document.getElementById('task-title').value = '';
         document.getElementById('task-description').value = '';
         document.getElementById('task-assigned').value = '';
         document.getElementById('task-priority').value = '';
         document.getElementById('task-deadline').value = '';
+
+    })
+    .catch(error => {
+        console.error("Error al guardar la tarea:", error);
+    });
     });
 
     // Función para habilitar drag and drop en las tareas
@@ -96,22 +110,22 @@ document.addEventListener('DOMContentLoaded', function () {
             e.dataTransfer.effectAllowed = 'move';
             e.dataTransfer.setData('text/html', e.target.innerHTML);
             setTimeout(() => {
-                e.target.classList.add('is-hidden'); // Ocultar el task mientras es arrastrado
+                e.target.classList.add('is-hidden'); // Oculta el task mientras es arrastrado
             }, 0);
         });
 
         task.addEventListener('dragend', function (e) {
-            e.target.classList.remove('is-hidden'); // Mostrar el task después de soltarlo
+            e.target.classList.remove('is-hidden'); // Muestra el task después de soltarlo
             draggedTask = null;
         });
     }
 
-    // Habilitar drag and drop para las tareas existentes en "To Do"
+    // Habilita drag and drop para las tareas existentes en "To Do"
     document.querySelectorAll('.box.task').forEach(task => {
         addDragAndDropEvents(task);
     });
 
-    // Habilitar drag and drop para las columnas
+    // Habilita drag and drop para las columnas
     const columns = document.querySelectorAll('.column');
 
     columns.forEach(column => {
@@ -130,7 +144,17 @@ document.addEventListener('DOMContentLoaded', function () {
 
     
     
-});
+async function postTask(task){
+    // Envía la nueva tarea al servidor
+    fetch(url, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(task)
+    })
+   
+}
 
 const url = "http://localhost:3000/tasks";
 
@@ -146,6 +170,22 @@ const url = "http://localhost:3000/tasks";
       }
       
 fetchData();
+function loadTasks(){
+tasks = fetchData().then((tasksResponse)=>{
+    tasksResponse.forEach((tasksResponse)=>{
+        console.log(tasksResponse.title);
+        tasksArray.push(tasksResponse);
+    });
+    loadTasks();
+});
+
+
+    tasksArray.forEach(task => {
+        createTaskHTML(task)
+    })
+}
+
+
 
 fetchData().then((tasks) => {
     console.log("Tareas recibidas: ", tasks);
@@ -159,7 +199,7 @@ fetchData().then((tasks) => {
     tasks.forEach(task => {
         const taskHTML = createTaskHTML(task);
 
-        // Colocar la tarea en la columna correcta basada en su estado
+        // Coloca la tarea en la columna correcta basada en su estado
         switch (task.status) {
             case 'To Do':
                 document.getElementById('to-do-tasks').insertAdjacentHTML('beforeend', taskHTML);
@@ -178,10 +218,11 @@ fetchData().then((tasks) => {
                 break;
         }
 
-        // Habilitar drag and drop en las tareas añadidas desde el servidor
+        // Habilita drag and drop en las tareas añadidas desde el servidor
         const lastTask = document.querySelectorAll('.box.task').item(-1); // Selecciona la última tarea insertada
         addDragAndDropEvents(lastTask);
     });
 }).catch((error) => {
     console.log("Error al procesar las tareas: ", error);
 });
+
